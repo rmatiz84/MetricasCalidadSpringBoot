@@ -152,6 +152,8 @@
 				<version>0.8.7</version>
 				<configuration>
 					<excludes>
+						<exclude>co/edu/uniandes/planafiliacion/PlanAfiliacionMSApplication.class</exclude>
+						<exclude>co/edu/uniandes/planafiliacion/PlanAfiliacionMSInitializer.class</exclude>
 						<exclude>**/controller/*</exclude>
 						<exclude>**/dto/*</exclude>
 						<exclude>**/exception/*</exclude>
