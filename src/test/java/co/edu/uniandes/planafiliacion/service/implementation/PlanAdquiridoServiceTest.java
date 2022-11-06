@@ -59,56 +59,7 @@ public class PlanAdquiridoServiceTest {
     Assertions.assertEquals("No se encuentra un usuario registrado", ex.getMessage());
   }
   
-  @Test
-  void registrarPlanDeportistaNotFound() {
-    log.info("Inicio test registrarPlanDeportistaNotFound");
-    PlanAdquiridoIn plan = new PlanAdquiridoIn();
-    plan.setIdDeportista("1");
-    plan.setIdPlanSuscripcion(1L);
-    UsuarioEntity usuario = new UsuarioEntity();
-    usuario.setId("1");
-    Optional<UsuarioEntity> optUsuario = Optional.of(usuario);
-    
-    Mockito.when(usuarioRepository.findById("1")).thenReturn(optUsuario);
-    Mockito.when(deportistaRepository.findByUsuario(optUsuario.get())).thenReturn(null);
-    
-    ElementoNoEncontradoException ex =
-            Assertions.assertThrows(
-                    ElementoNoEncontradoException.class,
-                    () -> {
-                    	planAdquiridoService.registrarPlanUsuario(plan);
-                    });
-    Assertions.assertNotNull(ex.getMessage());
-    Assertions.assertEquals("No se encuentra un deportista registrado", ex.getMessage());
-  }
-  
-  @Test
-  void registrarPlanSuscripcionNotFound() {
-    log.info("Inicio test registrarPlanSuscripcionNotFound");
-    PlanAdquiridoIn plan = new PlanAdquiridoIn();
-    plan.setIdDeportista("1");
-    plan.setIdPlanSuscripcion(1L);
-    UsuarioEntity usuario = new UsuarioEntity();
-    usuario.setId("1");
-    DeportistaEntity deportista = new DeportistaEntity();
-    deportista.setId("1");
-    deportista.setUsuario(usuario);
-    Optional<UsuarioEntity> optUsuario = Optional.of(usuario);
-    Optional<PlanSuscripcionEntity> optPlan = Optional.empty();
-    
-    Mockito.when(usuarioRepository.findById("1")).thenReturn(optUsuario);
-    Mockito.when(deportistaRepository.findByUsuario(optUsuario.get())).thenReturn(deportista);
-    Mockito.when(planSuscripcionRepository.findById(1l)).thenReturn(optPlan);
-    
-    ElementoNoEncontradoException ex =
-            Assertions.assertThrows(
-                    ElementoNoEncontradoException.class,
-                    () -> {
-                    	planAdquiridoService.registrarPlanUsuario(plan);
-                    });
-    Assertions.assertNotNull(ex.getMessage());
-    Assertions.assertEquals("No se encuentra un planSuscripcion registrado", ex.getMessage());
-  }
+
   
   @Test
   void registrarPlanAdquiridoDeportista() {
