@@ -3,8 +3,8 @@ package co.edu.uniandes.planafiliacion.jpa.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import co.edu.uniandes.commons.jpa.entity.usuarios.DeportistaEntity;
-import co.edu.uniandes.commons.jpa.entity.usuarios.UsuarioEntity;
+import co.edu.uniandes.planafiliacion.jpa.entity.DeportistaEntity;
+import co.edu.uniandes.planafiliacion.jpa.entity.UsuarioEntity;
 
 /**
  * Repositorio que contiene todas las operaciones necesarias para gestionar

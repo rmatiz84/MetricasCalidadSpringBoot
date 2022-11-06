@@ -1,6 +1,6 @@
 package co.edu.uniandes.planafiliacion.dto;
 
-import co.edu.uniandes.commons.util.EstadosPlanAdquiridoEnum;
+import co.edu.uniandes.planafiliacion.utilities.EstadosPlanAdquiridoEnum;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;

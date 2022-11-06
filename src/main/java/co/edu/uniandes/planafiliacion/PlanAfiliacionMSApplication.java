@@ -3,8 +3,6 @@ package co.edu.uniandes.planafiliacion;
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -14,8 +12,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  *
  * @since 1.0.0
  */
-@EntityScan({"co.edu.uniandes.commons.jpa.entity"})
-@EnableFeignClients
 @SpringBootApplication
 public class PlanAfiliacionMSApplication {
 
@@ -31,16 +27,6 @@ public class PlanAfiliacionMSApplication {
   public static void main(String[] args) {
     SpringApplication.run(PlanAfiliacionMSApplication.class, args);
   }
-  
-  @Bean
-  public WebMvcConfigurer corsConfigurer() {
-      return new WebMvcConfigurer() {
-          @Override
-          public void addCorsMappings(CorsRegistry registry) {
-        	  registry.addMapping("/**")
-              .allowedOrigins("*");
-          }
-      };
-  }  
+   
 
 }

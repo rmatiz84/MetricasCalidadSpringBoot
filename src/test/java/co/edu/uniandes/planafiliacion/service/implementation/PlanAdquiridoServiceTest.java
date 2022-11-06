@@ -14,12 +14,12 @@ import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 import org.modelmapper.ModelMapper;
 
-import co.edu.uniandes.commons.jpa.entity.afiliaciones.PlanSuscripcionEntity;
-import co.edu.uniandes.commons.jpa.entity.usuarios.DeportistaEntity;
-import co.edu.uniandes.commons.jpa.entity.usuarios.UsuarioEntity;
 import co.edu.uniandes.planafiliacion.dto.PlanAdquiridoIn;
 import co.edu.uniandes.planafiliacion.dto.PlanAdquiridoOut;
 import co.edu.uniandes.planafiliacion.exception.ElementoNoEncontradoException;
+import co.edu.uniandes.planafiliacion.jpa.entity.DeportistaEntity;
+import co.edu.uniandes.planafiliacion.jpa.entity.PlanSuscripcionEntity;
+import co.edu.uniandes.planafiliacion.jpa.entity.UsuarioEntity;
 import co.edu.uniandes.planafiliacion.jpa.repository.DeportistaRepository;
 import co.edu.uniandes.planafiliacion.jpa.repository.PlanAdquiridoRepository;
 import co.edu.uniandes.planafiliacion.jpa.repository.PlanSuscripcionRepository;

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -25,136 +27,13 @@
 			</snapshots>
 		</repository>
 	</repositories>
-	
-	<!-- PERFILES DE COMPILACION -->
-	<profiles>
-
-		<!-- PERFIL Azure -->
-		<!-- COMANDO: mvn clean install -P k8s -DskipTests -->
-		<profile>
-			<id>k8s</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<packaging.type>jar</packaging.type>
-				<activatedProperties>k8s</activatedProperties>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>exec-maven-plugin</artifactId>
-						<version>1.6.0</version>
-						<executions>
-							<!--  Create new docker image using Dockerfile which must be present in current working directory.
-                                 Tag the image using maven project version information. -->
-							<execution>
-								<id>docker-build</id>
-								<phase>install</phase>
-								<goals>
-									<goal>exec</goal>
-								</goals>
-								<configuration>
-									<executable>docker</executable>
-									<workingDirectory>${project.basedir}</workingDirectory>
-									<arguments>
-										<argument>build</argument>
-										<argument>-t</argument>
-										<argument>metricascalidadspringboot:${project.version}</argument>
-										<argument>.</argument>
-									</arguments>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<!-- PERFIL DEV -->
-		<!-- COMANDO: mvn clean install -P dev -DskipTests -->
-		<profile>
-			<id>dev</id>
-			<activation>
-				<activeByDefault>true</activeByDefault>
-			</activation>
-			<properties>
-				<packaging.type>jar</packaging.type>
-				<activatedProperties>dev</activatedProperties>
-			</properties>
-			<build>
-				<plugins>
-                  <plugin>
-                  <groupId>org.jacoco</groupId>
-                  <artifactId>jacoco-maven-plugin</artifactId>
-                  <version>0.8.7</version>
-            		<executions>
-            			<execution>
-            				<goals>
-            					<goal>prepare-agent</goal>
-            				</goals>
-            			</execution>
-            			<!-- attached to Maven test phase -->
-            			<execution>
-            				<id>report</id>
-            				<phase>test</phase>
-            				<goals>
-            					<goal>report</goal>
-            				</goals>
-            			</execution>
-            		</executions>
-                  </plugin>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>exec-maven-plugin</artifactId>
-						<version>1.6.0</version>
-						<executions>
-							<!--  Create new docker image using Dockerfile which must be present in current working directory.
-                                 Tag the image using maven project version information. -->
-							<execution>
-								<id>docker-build</id>
-								<phase>install</phase>
-								<goals>
-									<goal>exec</goal>
-								</goals>
-								<configuration>
-									<executable>docker</executable>
-									<workingDirectory>${project.basedir}</workingDirectory>
-									<arguments>
-										<argument>build</argument>
-										<argument>-t</argument>
-										<argument>metricascalidadspringboot:${project.version}</argument>
-										<argument>.</argument>
-									</arguments>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-
-		<!-- PERFIL DE PRODUCCION -->
-		<!-- COMANDO: mvn clean install -P prod -DskipTests -->
-		<profile>
-			<id>prod</id>
-			<activation>
-				<activeByDefault>false</activeByDefault>
-			</activation>
-			<properties>
-				<packaging.type>war</packaging.type>
-				<activatedProperties>prod</activatedProperties>
-			</properties>
-
-			
-		</profile>
-
-	</profiles>
 
 	<properties>
-        <java.version>8</java.version>
-        <spring-cloud.version>2021.0.3</spring-cloud.version>
+		<java.version>8</java.version>
+		<packaging.type>jar</packaging.type>
+		<spring-cloud.version>2021.0.3</spring-cloud.version>
+		<sonar.organization>rmatiz84</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
 	</properties>
 
 	<dependencies>
@@ -181,9 +60,9 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-		    <groupId>org.postgresql</groupId>
-		    <artifactId>postgresql</artifactId>
-		    <version>42.5.0</version>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>42.5.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -211,32 +90,21 @@
 			<version>2.3.8.RELEASE</version>
 		</dependency>
 
-		<!-- Pruebas Unitarias-->
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-core</artifactId>
-			<version>4.6.1</version>
-			<scope>test</scope>
-		</dependency>
+		<!-- Pruebas Unitarias -->
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.13.2</version>
 			<scope>test</scope>
 		</dependency>
-		<!-- Pruebas Unitarias-->
+		<!-- Pruebas Unitarias -->
+		<!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
 		<dependency>
-			<groupId>co.edu.uniandes.commons</groupId>
-			<artifactId>SportAppCommons</artifactId>
-			<version>[1.0.0,)</version>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>2.26.0</version>
+			<scope>test</scope>
 		</dependency>
-      <!-- https://mvnrepository.com/artifact/org.mockito/mockito-core -->
-      <dependency>
-          <groupId>org.mockito</groupId>
-          <artifactId>mockito-core</artifactId>
-          <version>2.26.0</version>
-          <scope>test</scope>
-      </dependency>
 	</dependencies>
 
 	<dependencyManagement>
@@ -264,6 +132,26 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.7</version>
+				<executions>
+					<execution>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<!-- attached to Maven test phase -->
+					<execution>
+						<id>report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>

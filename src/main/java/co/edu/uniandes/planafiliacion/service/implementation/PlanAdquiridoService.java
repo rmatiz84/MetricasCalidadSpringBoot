@@ -8,19 +8,19 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.edu.uniandes.commons.jpa.entity.afiliaciones.PlanAdquiridoEntity;
-import co.edu.uniandes.commons.jpa.entity.afiliaciones.PlanSuscripcionEntity;
-import co.edu.uniandes.commons.jpa.entity.usuarios.DeportistaEntity;
-import co.edu.uniandes.commons.jpa.entity.usuarios.UsuarioEntity;
-import co.edu.uniandes.commons.util.EstadosPlanAdquiridoEnum;
 import co.edu.uniandes.planafiliacion.dto.PlanAdquiridoIn;
 import co.edu.uniandes.planafiliacion.dto.PlanAdquiridoOut;
 import co.edu.uniandes.planafiliacion.exception.ElementoNoEncontradoException;
+import co.edu.uniandes.planafiliacion.jpa.entity.DeportistaEntity;
+import co.edu.uniandes.planafiliacion.jpa.entity.PlanAdquiridoEntity;
+import co.edu.uniandes.planafiliacion.jpa.entity.PlanSuscripcionEntity;
+import co.edu.uniandes.planafiliacion.jpa.entity.UsuarioEntity;
 import co.edu.uniandes.planafiliacion.jpa.repository.DeportistaRepository;
 import co.edu.uniandes.planafiliacion.jpa.repository.PlanAdquiridoRepository;
 import co.edu.uniandes.planafiliacion.jpa.repository.PlanSuscripcionRepository;
 import co.edu.uniandes.planafiliacion.jpa.repository.UsuarioRepository;
 import co.edu.uniandes.planafiliacion.service.IPlanAdquiridoService;
+import co.edu.uniandes.planafiliacion.utilities.EstadosPlanAdquiridoEnum;
 import co.edu.uniandes.planafiliacion.utilities.FechaUtil;
 import lombok.extern.slf4j.Slf4j;
 
