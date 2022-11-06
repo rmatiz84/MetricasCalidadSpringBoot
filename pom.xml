@@ -15,19 +15,6 @@
 	<name>MetricasCalidadSpringBoot</name>
 	<description>MetricasCalidadSpringBoot</description>
 
-	<repositories>
-		<repository>
-			<id>rmatiz</id>
-			<url>https://pkgs.dev.azure.com/rmatiz/_packaging/rmatiz/maven/v1</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-	</repositories>
-
 	<properties>
 		<java.version>8</java.version>
 		<packaging.type>jar</packaging.type>
