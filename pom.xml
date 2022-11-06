@@ -28,7 +28,9 @@
 			**/exception/*,
 			**/jpa/**/*,
 			**/security/**/*,
-			**/utilities/*
+			**/utilities/*,
+			co/edu/uniandes/planafiliacion/PlanAfiliacionMSApplication.class,
+			co/edu/uniandes/planafiliacion/PlanAfiliacionMSInitializer.class
 		</sonar.coverage.exclusions>
 	</properties>
 
