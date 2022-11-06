@@ -24,10 +24,10 @@
 		<sonar.scanner.force-deprecated-java-version>true</sonar.scanner.force-deprecated-java-version>
 		<sonar.coverage.exclusions>
 			**/controller/*,
-			**/dto/*
-			**/exception/*
-			**/jpa/**/*
-			**/security/**/*
+			**/dto/*,
+			**/exception/*,
+			**/jpa/**/*,
+			**/security/**/*,
 			**/utilities/*
 		</sonar.coverage.exclusions>
 	</properties>
@@ -150,6 +150,16 @@
 				<groupId>org.jacoco</groupId>
 				<artifactId>jacoco-maven-plugin</artifactId>
 				<version>0.8.7</version>
+				<configuration>
+					<excludes>
+						<exclude>**/controller/*</exclude>
+						<exclude>**/dto/*</exclude>
+						<exclude>**/exception/*</exclude>
+						<exclude>**/jpa/**/*</exclude>
+						<exclude>**/security/**/*</exclude>
+						<exclude>**/utilities/*</exclude>
+					</excludes>
+				</configuration>
 				<executions>
 					<execution>
 						<goals>
