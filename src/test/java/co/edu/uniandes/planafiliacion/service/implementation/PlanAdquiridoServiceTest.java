@@ -59,7 +59,6 @@ public class PlanAdquiridoServiceTest {
     Assertions.assertEquals("No se encuentra un usuario registrado", ex.getMessage());
   }
   
-  
   @Test
   void registrarPlanAdquiridoDeportista() {
     log.info("Inicio test registrarPlanAdquiridoDeportista");
