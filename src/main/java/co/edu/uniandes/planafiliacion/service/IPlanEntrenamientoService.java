@@ -50,7 +50,7 @@ public interface IPlanEntrenamientoService {
    * @return Información del PlanEntrenamiento
    * @since 1.0.0
    */
-  public PlanEntrenamientoOut registrarPlanEntrenamiento(PlanEntrenamientoIn PlanEntrenamiento, String usuario) throws ElementoNoEncontradoException;
+  public PlanEntrenamientoOut registrarPlanEntrenamiento(PlanEntrenamientoIn planEntrenamiento, String usuario) throws ElementoNoEncontradoException;
 
   
   
