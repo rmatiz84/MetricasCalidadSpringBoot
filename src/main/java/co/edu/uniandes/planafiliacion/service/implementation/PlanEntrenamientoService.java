@@ -59,6 +59,8 @@ public class PlanEntrenamientoService implements IPlanEntrenamientoService {
 	@Autowired
 	private EjercicioRepository ejercicioRepository;
 
+    private static final String MSG_SPORT_NOT_FOUND = "No se encuentra un deporte registrado";
+
 	@Override
 	public PlanEntrenamientoOut getPlanEntrenamientoById(String id) throws ElementoNoEncontradoException {
 		Optional<PlanEntrenamientoEntity> optPlanEntrenamiento = planEntrenamientoRepository.findById(id);
@@ -117,8 +119,8 @@ public class PlanEntrenamientoService implements IPlanEntrenamientoService {
 		// Validar deporte
 		Optional<DeporteEntity> deporte = deporteRepository.findById(planEntrenamiento.getIdDeporte());
 		if (!deporte.isPresent()) {
-			System.out.println("No se encuentra un deporte registrado");
-			throw new ElementoNoEncontradoException("No se encuentra un deporte registrado");
+			System.out.println(MSG_SPORT_NOT_FOUND);
+			throw new ElementoNoEncontradoException(MSG_SPORT_NOT_FOUND);
 		}
 
 		// Validar deportista
