@@ -119,7 +119,7 @@ public class PlanEntrenamientoService implements IPlanEntrenamientoService {
 		// Validar deporte
 		Optional<DeporteEntity> deporte = deporteRepository.findById(planEntrenamiento.getIdDeporte());
 		if (!deporte.isPresent()) {
-			System.out.println(MSG_SPORT_NOT_FOUND);
+			log.info(MSG_SPORT_NOT_FOUND);
 			throw new ElementoNoEncontradoException(MSG_SPORT_NOT_FOUND);
 		}
 
