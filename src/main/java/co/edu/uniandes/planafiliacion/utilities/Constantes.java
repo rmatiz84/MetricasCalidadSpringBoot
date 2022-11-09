@@ -18,6 +18,9 @@ public final class Constantes {
    * @since 1.0.0
    */
   public static final String PATH_PLAN_AFILIACION = "planesafiliacion";
+  
+  public static final String PASSWORD = "estaesunaclave";
+  public static final String USER = "usuario";
 
   
   /**
