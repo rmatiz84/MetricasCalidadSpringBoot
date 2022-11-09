@@ -167,7 +167,7 @@ public class PlanEntrenamientoService implements IPlanEntrenamientoService {
 		planEntrenamientoRepository.save(entidad);
 
 		PlanEntrenamientoOut respuesta = modelMapper.map(entidad, PlanEntrenamientoOut.class);
-		System.out.println("Se almacena el Evento");
+		log.info("Se almacena el Evento");
 		return respuesta;
 
 	}
