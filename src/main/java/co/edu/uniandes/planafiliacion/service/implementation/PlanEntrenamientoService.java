@@ -12,6 +12,7 @@ import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import co.edu.uniandes.planafiliacion.dto.Ejercicio;
 import co.edu.uniandes.planafiliacion.dto.PlanEntrenamientoIn;
 import co.edu.uniandes.planafiliacion.dto.PlanEntrenamientoOut;
 import co.edu.uniandes.planafiliacion.exception.ElementoNoEncontradoException;
@@ -59,13 +60,14 @@ public class PlanEntrenamientoService implements IPlanEntrenamientoService {
 	private EjercicioRepository ejercicioRepository;
 
 	@Override
-	public PlanEntrenamientoOut getPlanEntrenamientoById(String id) {
-		Long idPlan = Long.parseLong(id);
-		Optional<PlanEntrenamientoEntity> optPlanEntrenamiento = planEntrenamientoRepository.findById(idPlan.toString());
-		PlanEntrenamientoOut plan =  modelMapper.map(optPlanEntrenamiento.get(), PlanEntrenamientoOut.class);	
-		plan.setUser(Constantes.USER);
-		plan.setPassword(Constantes.PASSWORD);
-		return plan;
+	public PlanEntrenamientoOut getPlanEntrenamientoById(String id) throws ElementoNoEncontradoException {
+		Optional<PlanEntrenamientoEntity> optPlanEntrenamiento = planEntrenamientoRepository.findById(id);
+		if (optPlanEntrenamiento.isPresent()) {
+			return modelMapper.map(optPlanEntrenamiento.get(), PlanEntrenamientoOut.class);
+		} else {
+			log.info("No se encontró el Ejercicio {}", id);
+			throw new ElementoNoEncontradoException("No se encontró el Ejercicio " + id);
+		}
 	}
 
 	@Override

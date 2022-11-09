@@ -22,7 +22,7 @@ public interface IPlanEntrenamientoService {
    * @throws ElementoNoEncontradoException Error cuando no se puede obtener el PlanEntrenamiento
    * @since 1.0.0
    */
-  public PlanEntrenamientoOut getPlanEntrenamientoById(String id);
+  public PlanEntrenamientoOut getPlanEntrenamientoById(String id) throws ElementoNoEncontradoException;
   
   /**
    * Método encargado de obtener PlanEntrenamiento por ID
