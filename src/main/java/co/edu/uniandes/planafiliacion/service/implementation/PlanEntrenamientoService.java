@@ -135,7 +135,7 @@ public class PlanEntrenamientoService implements IPlanEntrenamientoService {
 		} else {
 			Optional<PlanEntrenamientoEntity> optEntidad = planEntrenamientoRepository
 					.findById(planEntrenamiento.getId());
-			if (optEntidad == null) {
+			if (!optEntidad.isPresent()) {
 				System.out.println("No se encuentra un plan de entrenamiento registrado para el id enviado");
 				throw new ElementoNoEncontradoException(
 						"No se encuentra un plan de entrenamiento registrado para el id enviado");
