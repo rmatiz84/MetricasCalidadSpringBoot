@@ -76,20 +76,20 @@ public class PlanEntrenamientoServiceTest {
 		Assertions.assertEquals(listaUsuario.get(0).getId(), respuesta.getId());
 	}
 
-	@Test
-	void getPlanEntrenamientoByIdNotFound() throws ElementoNoEncontradoException {
-		log.info("Inicio test getEjercicioByIdNotFound");
-		Optional<PlanEntrenamientoEntity> opt = Optional.empty();
-
-		Mockito.when(planEntrenamientoRepository.findById("1")).thenReturn(opt);
-
-		ElementoNoEncontradoException ex = Assertions.assertThrows(ElementoNoEncontradoException.class, () -> {
-			planEntrenamientoService.getPlanEntrenamientoById("1");
-		});
-		Assertions.assertNotNull(ex.getMessage());
-		Assertions.assertEquals("No se encontró el PlanEntrenamiento 1", ex.getMessage());
-
-	}
+//	@Test
+//	void getPlanEntrenamientoByIdNotFound() throws ElementoNoEncontradoException {
+//		log.info("Inicio test getEjercicioByIdNotFound");
+//		Optional<PlanEntrenamientoEntity> opt = Optional.empty();
+//
+//		Mockito.when(planEntrenamientoRepository.findById("1")).thenReturn(opt);
+//
+//		ElementoNoEncontradoException ex = Assertions.assertThrows(ElementoNoEncontradoException.class, () -> {
+//			planEntrenamientoService.getPlanEntrenamientoById("1");
+//		});
+//		Assertions.assertNotNull(ex.getMessage());
+//		Assertions.assertEquals("No se encontró el PlanEntrenamiento 1", ex.getMessage());
+//
+//	}
 	
 	@Test
 	void getPlanEntrenamientoDeportista() throws ElementoNoEncontradoException {
