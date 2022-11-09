@@ -76,7 +76,7 @@ public class PlanEntrenamientoService implements IPlanEntrenamientoService {
 		List<PlanEntrenamientoEntity> planEntrenamientoEntityList = planEntrenamientoRepository
 				.findByDeportistaAndEstado(idDeportista, EstadosPlanEntrenamientoEnum.ACTIVO);
 		if (Objects.isNull(planEntrenamientoEntityList) || planEntrenamientoEntityList.isEmpty()) {
-			System.out.println("No se encontró el PlanEntrenamiento activo para el deportista");
+			log.info("No se encontró el PlanEntrenamiento activo para el deportista");
 			throw new ElementoNoEncontradoException("No se encontró el PlanEntrenamiento activo para el deportista");
 		} else {
 			return modelMapper.map(planEntrenamientoEntityList.get(0), PlanEntrenamientoOut.class);
