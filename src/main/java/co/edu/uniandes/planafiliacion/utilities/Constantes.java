@@ -19,7 +19,7 @@ public final class Constantes {
    */
   public static final String PATH_PLAN_AFILIACION = "planesafiliacion";
   
-  public static final String PASSWORD = "estaesunaclave";
+  public static final String USER_PASS = "estaesunaclave";
   public static final String USER = "usuario";
 
   
