@@ -59,6 +59,8 @@ public class PlanEntrenamientoService implements IPlanEntrenamientoService {
 	@Autowired
 	private EjercicioRepository ejercicioRepository;
 
+    private static final String MSG_SPORT_NOT_FOUND = "No se encuentra un deporte registrado";
+
 	@Override
 	public PlanEntrenamientoOut getPlanEntrenamientoById(String id) throws ElementoNoEncontradoException {
 		Optional<PlanEntrenamientoEntity> optPlanEntrenamiento = planEntrenamientoRepository.findById(id);
@@ -76,7 +78,7 @@ public class PlanEntrenamientoService implements IPlanEntrenamientoService {
 		List<PlanEntrenamientoEntity> planEntrenamientoEntityList = planEntrenamientoRepository
 				.findByDeportistaAndEstado(idDeportista, EstadosPlanEntrenamientoEnum.ACTIVO);
 		if (Objects.isNull(planEntrenamientoEntityList) || planEntrenamientoEntityList.isEmpty()) {
-			System.out.println("No se encontró el PlanEntrenamiento activo para el deportista");
+			log.info("No se encontró el PlanEntrenamiento activo para el deportista");
 			throw new ElementoNoEncontradoException("No se encontró el PlanEntrenamiento activo para el deportista");
 		} else {
 			return modelMapper.map(planEntrenamientoEntityList.get(0), PlanEntrenamientoOut.class);
@@ -117,8 +119,8 @@ public class PlanEntrenamientoService implements IPlanEntrenamientoService {
 		// Validar deporte
 		Optional<DeporteEntity> deporte = deporteRepository.findById(planEntrenamiento.getIdDeporte());
 		if (!deporte.isPresent()) {
-			System.out.println("No se encuentra un deporte registrado");
-			throw new ElementoNoEncontradoException("No se encuentra un deporte registrado");
+			log.info(MSG_SPORT_NOT_FOUND);
+			throw new ElementoNoEncontradoException(MSG_SPORT_NOT_FOUND);
 		}
 
 		// Validar deportista
@@ -165,7 +167,7 @@ public class PlanEntrenamientoService implements IPlanEntrenamientoService {
 		planEntrenamientoRepository.save(entidad);
 
 		PlanEntrenamientoOut respuesta = modelMapper.map(entidad, PlanEntrenamientoOut.class);
-		System.out.println("Se almacena el Evento");
+		log.info("Se almacena el Evento");
 		return respuesta;
 
 	}
